@@ -13,7 +13,7 @@ ALGORITHM This algorithm takes an Short Time Fourier Transform (STFT) of the aud
 
 Loss Function
 
-I started with just an MSE loss between the clean speech amplitude and the reconstructed speech amplitude, however, this had the problem that it treated keeping noise equivalent to losing speech. As it is much more important to keep speech than to reduce noise, I created a custom loss function which features both a MSE term and another term which focuses specifically on
+I started with an MAE loss between the clean speech Fourier amplitude and the reconstructed speech Fourier amplitude. However, this had the problem that it penalised retaining noise as much as losing speech. In terms of understanding speech, it is much more important to keep speech than to reduce noise, so I created a custom loss function which features both a MAE term and another term which focuses specifically on retaining speech. Essentially this new term can be seen as the same MAE with an additional masking of both quantities with the true speech amplitude. 
 
 METRIC The PESQ metric is used in the industry as an automatic way to measure speech quality. It is not without it's problems but it still works as a first pass. I would advise you to listen to the output files (clean, corrupted and corrected) to get a better sense of how the algorithm performs.
 
